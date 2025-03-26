@@ -4,3 +4,4 @@ implementation a practical case for understand the algorithim in the last mountb
 getting a job for industriers in the last 20 minutes in the last twenty years   come on lest go   oOOoooooohhh
 
 
+![image](145515.png)
