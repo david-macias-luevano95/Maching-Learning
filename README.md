@@ -1,21 +1,20 @@
 # Maching Learning 
-# Cases for Regression
 
-## Simple Lineal Regression
+# Simple Lineal Regression
 
-# Importing the libraries
+## Importing the libraries
 ```
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd  # clase para cargar los datos 
 ```
-# Importing the dataset
+## Importing the dataset
 ```
 dataset = pd.read_csv('Salary_Data.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 ```
-# Splitting the dataset into the Training set and Test set
+## Splitting the dataset into the Training set and Test set
 ```
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
@@ -26,11 +25,11 @@ from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 regressor.fit(X_train, y_train)
 ```
-# predicticting test results
+## Predicticting Test Results
 ```
 y_pred = regressor.predict(X_test)
 ```
-# Visualising the training set result
+## Visualising the training set result
 ```
 plt.scatter(X_train, y_train, color = 'red')
 plt.plot(X_train, regressor.predict(X_train), color = 'blue')
@@ -39,7 +38,7 @@ plt.xlabel('Years of Experience')
 plt.ylabel('Salary')
 plt.show()
 ```
-
+![imagen](lineal_regresion/12.png)
 
 # Vusualising the Test set Results
 ```
@@ -50,6 +49,7 @@ plt.xlabel('Years of Experience')
 plt.ylabel('Salary')
 plt.show()
 ```
+![imagen](lineal_regresion/11.png)
 ## Multiple linear Regression 
 
 
