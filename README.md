@@ -1,6 +1,6 @@
 # Maching Learning 
 
-# Simple Lineal Regression
+## Simple Lineal Regression
 
 ## Importing the libraries
 ```
@@ -51,11 +51,50 @@ plt.show()
 ```
 ![imagen](lineal_regresion/11.png)
 ## Multiple linear Regression 
+# Importing Dataset
+```
+dataset = pd.read_csv('50_Startups.csv')
+X = dataset.iloc[:, :-1].values
+y = dataset.iloc[:, -1].values
+```
+# Encoding Categorical Data
+```  
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import OneHotEncoder
+ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [3])], remainder='passthrough')
+X = np.array(ct.fit_transform(X))
+```
+# Spliting the dataset into the training set and Test set
+```
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+```
+# Training the dataset into the training set and test set 
+```
+from sklearn.linear_model import LinearRegression
+regressor = LinearRegression()
+regressor.fit(X_train, y_train)
+```
+# Predicting test results 
+```
+y_pred = regressor.predict(X_test)
+np.set_printoptions(precision=2)
+print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),1)),1))
 
 
-## Polinomial Regression
+[[103015.2  103282.38]
+ [132582.28 144259.4 ]
+ [132447.74 146121.95]
+ [ 71976.1   77798.83]
+ [178537.48 191050.39]
+ [116161.24 105008.31]
+ [ 67851.69  81229.06]
+ [ 98791.73  97483.56]
+ [113969.44 110352.25]
+ [167921.07 166187.94]]
+```
 
-# 📈 Polynomial Regression - Truth or Bluff?
+# 📈 Polynomial Regression 
 
 This project demonstrates how to apply **Polynomial Regression** to predict salaries based on job position levels. The aim is to show how polynomial regression can capture nonlinear relationships in data more accurately than simple linear regression.
 
