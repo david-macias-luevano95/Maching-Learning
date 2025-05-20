@@ -1,14 +1,12 @@
 # Maching Learning 
 
-###  [Simple Lineal Regression](#1-Simple)
-###  [Prepare](#2-prepare)
-###  [Process](#3-process)
-###  [Analyze](#4-analyze)
-###  [Share](#5-share)
-###  [Act](#6-act)
+###  [Simple Lineal Regression](#1-simple_lineal_regression)
+###  [Multiple linear Regression](#2-multiple_linear_regression)
+###  [Polynomial Regression](#3-polynomial_regression)
+###  [Support Vector Regression (SVR)](#4-support_vector_regression_(svr))
+---
 
-
-## 1. Simple Lineal Regression
+## 1. Simple_Lineal_Regression
 
 This project demonstrates how to implement Simple Linear Regression using Python and scikit-learn. The model predicts employee salaries based on their years of experience.
 
@@ -66,7 +64,9 @@ plt.ylabel('Salary')
 plt.show()
 ```
 ![imagen](lineal_regresion/11.png)
-# Multiple linear Regression 
+
+
+## 2. Multiple_linear_Regression 
 ## Importing Dataset
 ```
 dataset = pd.read_csv('50_Startups.csv')
@@ -110,7 +110,7 @@ print(np.concatenate((y_pred.reshape(len(y_pred),1), y_test.reshape(len(y_test),
  [167921.07 166187.94]]
 ```
 
-# 📈 Polynomial Regression 
+## 3. Polynomial_Regression 
 
 This project demonstrates how to apply **Polynomial Regression** to predict salaries based on job position levels. The aim is to show how polynomial regression can capture nonlinear relationships in data more accurately than simple linear regression.
 
@@ -235,7 +235,7 @@ pandas
 matplotlib
 scikit-learn
 
-# Support Vector Regression (SVR) in Python
+## 4. Support_Vector_Regression_(SVR)
 This project demonstrates how to implement Support Vector Regression (SVR) using Python and scikit-learn. The model is trained to predict salaries based on position levels from a sample dataset.
 
 ### 📁 Dataset
