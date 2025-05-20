@@ -1,6 +1,16 @@
 # Maching Learning 
 
-## Simple Lineal Regression
+###  [Simple Lineal Regression](#1-Simple)
+###  [Prepare](#2-prepare)
+###  [Process](#3-process)
+###  [Analyze](#4-analyze)
+###  [Share](#5-share)
+###  [Act](#6-act)
+
+
+## 1. Simple Lineal Regression
+
+This project demonstrates how to implement Simple Linear Regression using Python and scikit-learn. The model predicts employee salaries based on their years of experience.
 
 ### Importing the libraries
 ```
@@ -9,11 +19,17 @@ import matplotlib.pyplot as plt
 import pandas as pd  # clase para cargar los datos 
 ```
 ### Importing the dataset
+
+The dataset used is Salary_Data.csv, which includes:
+YearsExperience: Number of years an employee has worked.
+Salary: The corresponding annual salary.
+
 ```
 dataset = pd.read_csv('Salary_Data.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 ```
+
 ### Splitting the dataset into the Training set and Test set
 ```
 from sklearn.model_selection import train_test_split
@@ -218,8 +234,70 @@ numpy
 pandas
 matplotlib
 scikit-learn
-📝 License
-This project is open source and available under the MIT License.
 
-🙋‍♂️ Author
-Created by [Your Name] - feel free to connect or fork the project!
+# Support Vector Regression (SVR) in Python
+This project demonstrates how to implement Support Vector Regression (SVR) using Python and scikit-learn. The model is trained to predict salaries based on position levels from a sample dataset.
+
+### 📁 Dataset
+The dataset used is Position_Salaries.csv, which contains the following columns:
+
+Position (e.g., Business Analyst, Manager)
+
+Level (numeric level of the position)
+
+Salary (target variable)
+
+Make sure the dataset file is located in the same directory as the script.
+
+### 🔧 Requirements
+To run this example, you need the following Python libraries:
+
+bash
+Copy
+Edit
+pip install numpy pandas matplotlib scikit-learn
+🚀 How It Works
+Importing Libraries: Loads the necessary Python libraries for data processing, visualization, and machine learning.
+
+Loading the Dataset: Reads the CSV file and extracts the features (X) and target variable (y).
+
+Feature Scaling: Since SVR does not automatically handle feature scaling, both X and y are scaled using StandardScaler.
+
+Model Training: The SVR model with an RBF kernel is trained on the entire dataset.
+
+Prediction: Predicts a salary for a position level of 6.5, then transforms the scaled prediction back to the original scale.
+
+### Visualization:
+
+A scatter plot of the real salaries vs. position levels.
+
+A line plot of the predicted salaries.
+
+A high-resolution version of the curve for better visualization.
+
+### 📊 Output
+The script produces two plots:
+
+A standard plot showing the fit of the SVR model.
+
+A smoother curve showing the predicted salary trend at finer granularity.
+
+### 📌 Notes
+SVR requires scaled features for optimal performance.
+
+Only one feature (Level) is used to predict the Salary.
+
+The model uses the RBF (Radial Basis Function) kernel, which is commonly used for non-linear regression.
+
+### 📎 Example
+python
+Copy
+Edit
+# Predicting a new result
+sc_y.inverse_transform(regressor.predict(sc_X.transform([[6.5]])).reshape(-1,1))
+This predicts the salary for position level 6.5 after scaling and inverse transforming the result.
+
+
+
+### 🙋‍♂️ Author
+Created by David Macias Luevano 
