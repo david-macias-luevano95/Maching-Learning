@@ -2,34 +2,34 @@
 
 ## Simple Lineal Regression
 
-## Importing the libraries
+### Importing the libraries
 ```
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd  # clase para cargar los datos 
 ```
-## Importing the dataset
+### Importing the dataset
 ```
 dataset = pd.read_csv('Salary_Data.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 ```
-## Splitting the dataset into the Training set and Test set
+### Splitting the dataset into the Training set and Test set
 ```
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 ```
-## Training the Simple Linear Regression model on the Training set
+### Training the Simple Linear Regression model on the Training set
 ```
 from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 regressor.fit(X_train, y_train)
 ```
-## Predicticting Test Results
+### Predicticting Test Results
 ```
 y_pred = regressor.predict(X_test)
 ```
-## Visualising the training set result
+### Visualising the training set result
 ```
 plt.scatter(X_train, y_train, color = 'red')
 plt.plot(X_train, regressor.predict(X_train), color = 'blue')
@@ -40,7 +40,7 @@ plt.show()
 ```
 ![imagen](lineal_regresion/12.png)
 
-# Vusualising the Test set Results
+### Vusualising the Test set Results
 ```
 plt.scatter(X_test, y_test, color = 'red')
 plt.plot(X_train, regressor.predict(X_train), color = 'blue')
@@ -50,32 +50,32 @@ plt.ylabel('Salary')
 plt.show()
 ```
 ![imagen](lineal_regresion/11.png)
-## Multiple linear Regression 
-# Importing Dataset
+# Multiple linear Regression 
+## Importing Dataset
 ```
 dataset = pd.read_csv('50_Startups.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 ```
-# Encoding Categorical Data
+## Encoding Categorical Data
 ```  
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [3])], remainder='passthrough')
 X = np.array(ct.fit_transform(X))
 ```
-# Spliting the dataset into the training set and Test set
+## Spliting the dataset into the training set and Test set
 ```
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 ```
-# Training the dataset into the training set and test set 
+## Training the dataset into the training set and test set 
 ```
 from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 regressor.fit(X_train, y_train)
 ```
-# Predicting test results 
+## Predicting test results 
 ```
 y_pred = regressor.predict(X_test)
 np.set_printoptions(precision=2)
@@ -100,7 +100,7 @@ This project demonstrates how to apply **Polynomial Regression** to predict sala
 
 ---
 
-## 🧠 Project Summary
+### 🧠 Project Summary
 
 We explore the difference between:
 
@@ -111,7 +111,7 @@ We use a fictional dataset where salary increases with position level in a nonli
 
 ---
 
-## 📂 Dataset
+### 📂 Dataset
 
 The dataset used is `Position_Salaries.csv`, which contains:
 
@@ -121,7 +121,7 @@ The dataset used is `Position_Salaries.csv`, which contains:
 
 ---
 
-## 📌 Libraries Used
+### 📌 Libraries Used
 
 ```python
 import numpy as np
