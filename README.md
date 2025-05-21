@@ -5,7 +5,8 @@ This repository contains four foundational regression models implemented in Pyth
 ###  [Simple Lineal Regression](#1-simple_lineal_regression)
 ###  [Multiple linear Regression](#2-multiple_linear_regression)
 ###  [Polynomial Regression](#3-polynomial_regression)
-###  [Support Vector Regression (SVR)](#4-support_vector_regression_(svr))
+###  [Support Vector Regression(SVR)](#4-support_vector_regression_(svr))
+
 ---
 
 ## 1. Simple_Lineal_Regression
@@ -233,44 +234,23 @@ plt.xlabel('Position Level')
 plt.ylabel('Salary')
 plt.show()
 ```
-🔹 5. Make Predictions
-# Predict with Linear Regression
+## Make Predictions
+### Predict with Linear Regression
 lin_reg.predict([[6.5]])  # → array([330378.78787879])
 
-# Predict with Polynomial Regression
+### Predict with Polynomial Regression
 lin_reg_2.predict(poly_reg.fit_transform([[6.5]]))  # → array([158862.45265155])
+
 📊 Result
-The Linear Regression model overestimates the salary at level 6.5, while the Polynomial Regression model provides a more realistic prediction, showcasing the advantage of using non-linear models for non-linear data.
+The Linear Regression model overestimates the salary at level 6.5, while the Polynomial Regression model provides a more realistic prediction,
+showcasing the advantage of using non-linear models for non-linear data.
 
-📁 Folder Structure
-Copy
-Edit
-.
-├── Position_Salaries.csv
-├── polynomial_regression.py / .ipynb
-├── README.md
-└── requirements.txt
-📦 Requirements
-To install the required libraries:
 
-bash
-Copy
-Edit
-pip install -r requirements.txt
-requirements.txt example:
-
-nginx
-Copy
-Edit
-numpy
-pandas
-matplotlib
-scikit-learn
 
 ## 4. Support_Vector_Regression_(SVR)
 This project demonstrates how to implement Support Vector Regression (SVR) using Python and scikit-learn. The model is trained to predict salaries based on position levels from a sample dataset.
 
-### 📁 Dataset
+### Importing the dataset
 The dataset used is Position_Salaries.csv, which contains the following columns:
 
 Position (e.g., Business Analyst, Manager)
@@ -278,26 +258,47 @@ Position (e.g., Business Analyst, Manager)
 Level (numeric level of the position)
 
 Salary (target variable)
+```
+dataset = pd.read_csv('Position_Salaries.csv')
+X = dataset.iloc[:, 1:-1].values
+y = dataset.iloc[:, -1].values
+```
 
-Make sure the dataset file is located in the same directory as the script.
+### Feature Scaling
+from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+sc_y = StandardScaler()
+X = sc_X.fit_transform(X)
+y = sc_y.fit_transform(y)
+print(X)
+print(y)
 
-### 🔧 Requirements
-To run this example, you need the following Python libraries:
+### Training the SVR model on the whole dataset
+from sklearn.svm import SVR
+regressor = SVR(kernel = 'rbf')
+regressor.fit(X, y)
 
-bash
-Copy
-Edit
-pip install numpy pandas matplotlib scikit-learn
-🚀 How It Works
-Importing Libraries: Loads the necessary Python libraries for data processing, visualization, and machine learning.
+### Predicting a new result
+sc_y.inverse_transform(regressor.predict(sc_X.transform([[6.5]])).reshape(-1,1))
 
-Loading the Dataset: Reads the CSV file and extracts the features (X) and target variable (y).
+### Visualising the SVR results
+plt.scatter(sc_X.inverse_transform(X), sc_y.inverse_transform(y), color = 'red')
+plt.plot(sc_X.inverse_transform(X), sc_y.inverse_transform(regressor.predict(X).reshape(-1,1)), color = 'blue')
+plt.title('Truth or Bluff (SVR)')
+plt.xlabel('Position level')
+plt.ylabel('Salary')
+plt.show()
 
-Feature Scaling: Since SVR does not automatically handle feature scaling, both X and y are scaled using StandardScaler.
+### Visualising the SVR results (for higher resolution and smoother curve)
+X_grid = np.arange(min(sc_X.inverse_transform(X)), max(sc_X.inverse_transform(X)), 0.1)
+X_grid = X_grid.reshape((len(X_grid), 1))
+plt.scatter(sc_X.inverse_transform(X), sc_y.inverse_transform(y), color = 'red')
+plt.plot(X_grid, sc_y.inverse_transform(regressor.predict(sc_X.transform(X_grid)).reshape(-1,1)), color = 'blue')
+plt.title('Truth or Bluff (SVR)')
+plt.xlabel('Position level')
+plt.ylabel('Salary')
+plt.show()
 
-Model Training: The SVR model with an RBF kernel is trained on the entire dataset.
-
-Prediction: Predicts a salary for a position level of 6.5, then transforms the scaled prediction back to the original scale.
 
 ### Visualization:
 
@@ -307,27 +308,13 @@ A line plot of the predicted salaries.
 
 A high-resolution version of the curve for better visualization.
 
-### 📊 Output
-The script produces two plots:
 
-A standard plot showing the fit of the SVR model.
-
-A smoother curve showing the predicted salary trend at finer granularity.
-
-### 📌 Notes
+###  Notes
 SVR requires scaled features for optimal performance.
 
 Only one feature (Level) is used to predict the Salary.
 
 The model uses the RBF (Radial Basis Function) kernel, which is commonly used for non-linear regression.
-
-### 📎 Example
-python
-Copy
-Edit
-# Predicting a new result
-sc_y.inverse_transform(regressor.predict(sc_X.transform([[6.5]])).reshape(-1,1))
-This predicts the salary for position level 6.5 after scaling and inverse transforming the result.
 
 
 
