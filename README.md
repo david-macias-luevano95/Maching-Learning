@@ -5,7 +5,7 @@ This repository contains four foundational regression models implemented in Pyth
 ###  [Simple Lineal Regression](#1-simple_lineal_regression)
 ###  [Multiple linear Regression](#2-multiple_linear_regression)
 ###  [Polynomial Regression](#3-polynomial_regression)
-###  [Support Vector Regression(SVR)](#4-support_vector_regression_(svr))
+###  [Support Vector Regression(SVR)](#4-support_vector_regression)
 
 ---
 
@@ -236,18 +236,20 @@ plt.show()
 ```
 ## Make Predictions
 ### Predict with Linear Regression
+```
 lin_reg.predict([[6.5]])  # → array([330378.78787879])
-
+```
 ### Predict with Polynomial Regression
+```
 lin_reg_2.predict(poly_reg.fit_transform([[6.5]]))  # → array([158862.45265155])
-
-📊 Result
+```
+## 📊 Result
 The Linear Regression model overestimates the salary at level 6.5, while the Polynomial Regression model provides a more realistic prediction,
 showcasing the advantage of using non-linear models for non-linear data.
 
 
 
-## 4. Support_Vector_Regression_(SVR)
+## 4. Support_Vector_Regression
 This project demonstrates how to implement Support Vector Regression (SVR) using Python and scikit-learn. The model is trained to predict salaries based on position levels from a sample dataset.
 
 ### Importing the dataset
@@ -265,6 +267,7 @@ y = dataset.iloc[:, -1].values
 ```
 
 ### Feature Scaling
+```
 from sklearn.preprocessing import StandardScaler
 sc_X = StandardScaler()
 sc_y = StandardScaler()
@@ -272,24 +275,28 @@ X = sc_X.fit_transform(X)
 y = sc_y.fit_transform(y)
 print(X)
 print(y)
-
+```
 ### Training the SVR model on the whole dataset
+```
 from sklearn.svm import SVR
 regressor = SVR(kernel = 'rbf')
 regressor.fit(X, y)
-
+```
 ### Predicting a new result
+```
 sc_y.inverse_transform(regressor.predict(sc_X.transform([[6.5]])).reshape(-1,1))
-
+```
 ### Visualising the SVR results
+```
 plt.scatter(sc_X.inverse_transform(X), sc_y.inverse_transform(y), color = 'red')
 plt.plot(sc_X.inverse_transform(X), sc_y.inverse_transform(regressor.predict(X).reshape(-1,1)), color = 'blue')
 plt.title('Truth or Bluff (SVR)')
 plt.xlabel('Position level')
 plt.ylabel('Salary')
 plt.show()
-
+```
 ### Visualising the SVR results (for higher resolution and smoother curve)
+```
 X_grid = np.arange(min(sc_X.inverse_transform(X)), max(sc_X.inverse_transform(X)), 0.1)
 X_grid = X_grid.reshape((len(X_grid), 1))
 plt.scatter(sc_X.inverse_transform(X), sc_y.inverse_transform(y), color = 'red')
@@ -298,7 +305,7 @@ plt.title('Truth or Bluff (SVR)')
 plt.xlabel('Position level')
 plt.ylabel('Salary')
 plt.show()
-
+```
 
 ### Visualization:
 
