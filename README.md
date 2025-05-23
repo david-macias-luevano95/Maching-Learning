@@ -212,7 +212,7 @@ plt.xlabel('Position Level')
 plt.ylabel('Salary')
 plt.show()
 ```
-![image](Polinomial Regression/Figure 2024-11-20 203006.png)
+![image](Polinomial Regression/poli1.png)
 
 Polynomial Regression (Standard):
 ```
@@ -239,10 +239,15 @@ plt.show()
 ```
 lin_reg.predict([[6.5]])  # → array([330378.78787879])
 ```
+
+![image](Polinomial Regression/poli2.png)
 ### Predict with Polynomial Regression
 ```
 lin_reg_2.predict(poly_reg.fit_transform([[6.5]]))  # → array([158862.45265155])
 ```
+
+![image](Polinomial Regression/poli3.png)
+
 ## 📊 Result
 The Linear Regression model overestimates the salary at level 6.5, while the Polynomial Regression model provides a more realistic prediction,
 showcasing the advantage of using non-linear models for non-linear data.
