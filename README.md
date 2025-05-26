@@ -239,20 +239,22 @@ plt.show()
 ```
 lin_reg.predict([[6.5]])  # → array([330378.78787879])
 ```
-
-
+![imagen](Polinomial_Regresion/poli3.png)
 
 ### Predict with Polynomial Regression
 ```
 lin_reg_2.predict(poly_reg.fit_transform([[6.5]]))  # → array([158862.45265155])
 ```
+![imagen](Polinomial_Regresion/poli2.png)
+
+
 
 
 ## 📊 Result
 The Linear Regression model overestimates the salary at level 6.5, while the Polynomial Regression model provides a more realistic prediction,
 showcasing the advantage of using non-linear models for non-linear data.
 
-
+![imagen](Polinomial_Regresion/poli1.png)
 
 ## 4. Support_Vector_Regression
 This project demonstrates how to implement Support Vector Regression (SVR) using Python and scikit-learn. The model is trained to predict salaries based on position levels from a sample dataset.
