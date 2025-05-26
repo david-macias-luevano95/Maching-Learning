@@ -302,6 +302,8 @@ plt.xlabel('Position level')
 plt.ylabel('Salary')
 plt.show()
 ```
+![imagen](SVR/svr1.png)
+
 ### Visualising the SVR results (for higher resolution and smoother curve)
 ```
 X_grid = np.arange(min(sc_X.inverse_transform(X)), max(sc_X.inverse_transform(X)), 0.1)
@@ -313,6 +315,7 @@ plt.xlabel('Position level')
 plt.ylabel('Salary')
 plt.show()
 ```
+![imagen](SVR/sv2.png)
 
 ### Visualization:
 
