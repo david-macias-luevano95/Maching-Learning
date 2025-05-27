@@ -73,7 +73,7 @@ plt.show()
 
 This project demonstrates how to implement Multiple Linear Regression using Python and scikit-learn. The model is trained to predict startup profits based on multiple input features such as R&D Spend, Administration, Marketing Spend, and State.
 
-## Importing Dataset
+### Importing Dataset
 The dataset used is 50_Startups.csv, which includes 50 observations of startup spending and profit.
 
 
@@ -94,25 +94,25 @@ dataset = pd.read_csv('50_Startups.csv')
 X = dataset.iloc[:, :-1].values
 y = dataset.iloc[:, -1].values
 ```
-## Encoding Categorical Data
+### Encoding Categorical Data
 ```  
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import OneHotEncoder
 ct = ColumnTransformer(transformers=[('encoder', OneHotEncoder(), [3])], remainder='passthrough')
 X = np.array(ct.fit_transform(X))
 ```
-## Spliting the dataset into the training set and Test set
+### Spliting the dataset into the training set and Test set
 ```
 from sklearn.model_selection import train_test_split
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
 ```
-## Training the dataset into the training set and test set 
+### Training the dataset into the training set and test set 
 ```
 from sklearn.linear_model import LinearRegression
 regressor = LinearRegression()
 regressor.fit(X_train, y_train)
 ```
-## Predicting test results 
+### Predicting test results 
 ```
 y_pred = regressor.predict(X_test)
 np.set_printoptions(precision=2)
@@ -154,7 +154,7 @@ We use a fictional dataset where salary increases with position level in a nonli
 
 ---
 
-## Importing Dataset
+#### Importing Dataset
 
 The dataset used is `Position_Salaries.csv`, which contains:
 
@@ -164,7 +164,7 @@ The dataset used is `Position_Salaries.csv`, which contains:
 
 ---
 
-###  Libraries Used
+####  Importing Libraries
 
 ```python
 import numpy as np
@@ -176,8 +176,7 @@ from sklearn.preprocessing import PolynomialFeatures
 ```
 
 
-🛠️ Steps
-## Importing Dataset
+#### Importing Dataset
 
 The dataset used is `Position_Salaries.csv`, which contains:
 
@@ -190,19 +189,19 @@ dataset = pd.read_csv('Position_Salaries.csv')
 X = dataset.iloc[:, 1:-1].values
 y = dataset.iloc[:, -1].values
 ```
-## Train Linear Regression Model
+#### Train Linear Regression Model
 ```
 lin_reg = LinearRegression()
 lin_reg.fit(X, y)
 ```
-🔹 3. Train Polynomial Regression Model
+#### Train Polynomial Regression Model
 ```
 poly_reg = PolynomialFeatures(degree=4)
 X_poly = poly_reg.fit_transform(X)
 lin_reg_2 = LinearRegression()
 lin_reg_2.fit(X_poly, y)
 ```
-🔹 4. Visualize Results
+#### Visualize Results
 Linear Regression:
 ```
 plt.scatter(X, y, color='red')
@@ -212,9 +211,9 @@ plt.xlabel('Position Level')
 plt.ylabel('Salary')
 plt.show()
 ```
+![imagen](Polinomial_Regresion/poli3.png)
 
-
-Polynomial Regression (Standard):
+#### Polynomial Regression (Standard):
 ```
 plt.scatter(X, y, color='red')
 plt.plot(X, lin_reg_2.predict(poly_reg.fit_transform(X)), color='blue')
@@ -223,7 +222,9 @@ plt.xlabel('Position Level')
 plt.ylabel('Salary')
 plt.show()
 ```
-Polynomial Regression (Smooth Curve):
+![imagen](Polinomial_Regresion/poli2.png)
+
+#### Polynomial Regression (Smooth Curve):
 ```
 X_grid = np.arange(min(X), max(X), 0.1)
 X_grid = X_grid.reshape((len(X_grid), 1))
@@ -234,32 +235,30 @@ plt.xlabel('Position Level')
 plt.ylabel('Salary')
 plt.show()
 ```
+![imagen](Polinomial_Regresion/poli1.png)
+
 ## Make Predictions
+
 ### Predict with Linear Regression
 ```
 lin_reg.predict([[6.5]])  # → array([330378.78787879])
 ```
-![imagen](Polinomial_Regresion/poli3.png)
 
 ### Predict with Polynomial Regression
 ```
 lin_reg_2.predict(poly_reg.fit_transform([[6.5]]))  # → array([158862.45265155])
 ```
-![imagen](Polinomial_Regresion/poli2.png)
 
 
-
-
-## 📊 Result
+#### 📊 Result
 The Linear Regression model overestimates the salary at level 6.5, while the Polynomial Regression model provides a more realistic prediction,
 showcasing the advantage of using non-linear models for non-linear data.
 
-![imagen](Polinomial_Regresion/poli1.png)
 
 ## 4. Support_Vector_Regression
 This project demonstrates how to implement Support Vector Regression (SVR) using Python and scikit-learn. The model is trained to predict salaries based on position levels from a sample dataset.
 
-### Importing the dataset
+#### Importing the dataset
 The dataset used is Position_Salaries.csv, which contains the following columns:
 
 Position (e.g., Business Analyst, Manager)
@@ -273,7 +272,7 @@ X = dataset.iloc[:, 1:-1].values
 y = dataset.iloc[:, -1].values
 ```
 
-### Feature Scaling
+#### Feature Scaling
 ```
 from sklearn.preprocessing import StandardScaler
 sc_X = StandardScaler()
@@ -283,17 +282,17 @@ y = sc_y.fit_transform(y)
 print(X)
 print(y)
 ```
-### Training the SVR model on the whole dataset
+#### Training the SVR model on the whole dataset
 ```
 from sklearn.svm import SVR
 regressor = SVR(kernel = 'rbf')
 regressor.fit(X, y)
 ```
-### Predicting a new result
+#### Predicting a new result
 ```
 sc_y.inverse_transform(regressor.predict(sc_X.transform([[6.5]])).reshape(-1,1))
 ```
-### Visualising the SVR results
+#### Visualising the SVR results
 ```
 plt.scatter(sc_X.inverse_transform(X), sc_y.inverse_transform(y), color = 'red')
 plt.plot(sc_X.inverse_transform(X), sc_y.inverse_transform(regressor.predict(X).reshape(-1,1)), color = 'blue')
@@ -304,7 +303,7 @@ plt.show()
 ```
 ![imagen](SVR/svr1.png)
 
-### Visualising the SVR results (for higher resolution and smoother curve)
+#### Visualising the SVR results (for higher resolution and smoother curve)
 ```
 X_grid = np.arange(min(sc_X.inverse_transform(X)), max(sc_X.inverse_transform(X)), 0.1)
 X_grid = X_grid.reshape((len(X_grid), 1))
@@ -317,7 +316,7 @@ plt.show()
 ```
 ![imagen](SVR/sv2.png)
 
-### Visualization:
+#### Visualization:
 
 A scatter plot of the real salaries vs. position levels.
 
@@ -326,7 +325,7 @@ A line plot of the predicted salaries.
 A high-resolution version of the curve for better visualization.
 
 
-###  Notes
+####  Notes
 SVR requires scaled features for optimal performance.
 
 Only one feature (Level) is used to predict the Salary.
